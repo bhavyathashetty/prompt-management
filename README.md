@@ -7,7 +7,7 @@ A starter React + TypeScript UI for a dedicated AI prompt management system. Thi
 - Analytics overview cards and usage visualization
 - AI-assisted prompt enhancement panel
 
-## Phase 1 MVP scope
+
 
 Users can:
 

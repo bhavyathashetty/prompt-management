@@ -541,11 +541,6 @@ function App(): ReactElement {
           </a>
         </nav>
 
-        <div className="sidebar-card">
-          <p>Phase 1 MVP</p>
-          <strong>Local first</strong>
-          <span>CRUD, search, categories, copy, favorites, and persistence.</span>
-        </div>
       </aside>
 
       <main className="main-content">
@@ -553,10 +548,7 @@ function App(): ReactElement {
           <div>
             <span className="eyebrow">Dedicated prompt workspace</span>
             <h1>Save, organize, discover, improve, and reuse prompts quickly.</h1>
-            <p>
-              A TypeScript MVP that demonstrates React hooks, component composition,
-              local storage persistence, filtering, prompt CRUD, copy-to-clipboard, and prompt enhancement.
-            </p>
+       
             <div className="hero-actions">
               <a className="primary-button" href="#editor">
                 <MessageSquarePlus size={18} /> Create prompt
@@ -616,7 +608,7 @@ function App(): ReactElement {
           <form className="panel prompt-form" id="editor" onSubmit={handleSubmit}>
             <div className="section-header compact">
               <div>
-                <span className="eyebrow">Prompt CRUD</span>
+                <span className="eyebrow">Prompt</span>
                 <h2>{editingPromptId ? 'Update prompt' : 'Create prompt'}</h2>
               </div>
               <MessageSquarePlus size={22} />
