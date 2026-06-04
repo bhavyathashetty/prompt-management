@@ -1,4 +1,4 @@
-# PromptFlow
+# PromptEasy
 
 A starter React + TypeScript UI for a dedicated AI prompt management system. This initial setup focuses on the frontend foundation and mock dashboard experience for:
 
