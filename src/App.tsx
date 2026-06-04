@@ -46,7 +46,7 @@ type StatCardProps = {
   helper: string;
 };
 
-const STORAGE_KEY = 'promptflow.prompts.v1';
+const STORAGE_KEY = 'prompteasy.prompts.v1';
 const categories: PromptCategory[] = ['Coding', 'Career', 'Learning', 'Travel', 'Food', 'Writing'];
 
 const defaultForm: PromptFormState = {
@@ -518,8 +518,8 @@ function App(): ReactElement {
             <Sparkles size={22} />
           </div>
           <div>
-            <p>PromptFlow</p>
-            <span>Prompt Management MVP</span>
+            <p>PromptEasy</p>
+            <span>Prompt Management</span>
           </div>
         </div>
 
