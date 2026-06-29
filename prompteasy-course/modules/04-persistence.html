@@ -1,0 +1,92 @@
+<section class="module" id="module-4">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">04</span>
+      <h1 class="module-title">How It Remembers</h1>
+      <p class="module-subtitle">PromptEasy has no database. It uses the browser itself as a small notebook.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Local storage is a desk drawer</h2>
+      <p><span class="term" data-definition="localStorage is browser storage for small pieces of text data. It stays after refresh, but it belongs to this browser on this device.">localStorage</span> keeps saved prompts after the tab closes. That is convenient for an MVP, but it is not shared across devices or users.</p>
+      <div class="pattern-cards stagger-children">
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-5)">
+          <div class="pattern-icon" style="background: var(--color-actor-5)">G</div>
+          <h4 class="pattern-title">Good Fit</h4>
+          <p class="pattern-desc">Fast local MVPs, prototypes, demos, and private single-browser tools.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-4)">
+          <div class="pattern-icon" style="background: var(--color-actor-4)">T</div>
+          <h4 class="pattern-title">Tradeoff</h4>
+          <p class="pattern-desc">No account sync, no team sharing, and limited recovery if data is cleared.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-2)">
+          <div class="pattern-icon" style="background: var(--color-actor-2)">N</div>
+          <h4 class="pattern-title">Next Step</h4>
+          <p class="pattern-desc">A real backend database when users need login, sync, or collaboration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Load carefully, save automatically</h2>
+      <p>The app uses <span class="term" data-definition="JSON is a text format for storing structured data such as arrays and objects. It is common when saving data or sending it between systems.">JSON</span> to store the prompt list as text. The careful part is the fallback: if stored data is missing or broken, the starter prompts still load.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">function</span> getInitialPrompts(): Prompt[] {</span>
+<span class="code-line">  <span class="code-keyword">const</span> storedPrompts = localStorage.getItem(STORAGE_KEY);</span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="code-keyword">if</span> (!storedPrompts) {</span>
+<span class="code-line">    <span class="code-keyword">return</span> starterPrompts;</span>
+<span class="code-line">  }</span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="code-keyword">try</span> {</span>
+<span class="code-line">    <span class="code-keyword">const</span> parsedPrompts = JSON.parse(storedPrompts) <span class="code-keyword">as</span> Prompt[];</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Create the prompt list the app should start with.</p>
+            <p class="tl">Ask the browser drawer whether saved prompts exist.</p>
+            <p class="tl">If not, use the starter examples.</p>
+            <p class="tl">Try to convert stored text back into prompt objects.</p>
+          </div>
+        </div>
+      </div>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line">useEffect(() =&gt; {</span>
+<span class="code-line">  localStorage.setItem(STORAGE_KEY, JSON.stringify(prompts));</span>
+<span class="code-line">}, [prompts]);</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Whenever the prompt list changes, run this side task.</p>
+            <p class="tl">Convert the list into text and save it under the storage key.</p>
+            <p class="tl">The dependency list says this only needs to run after prompts changes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module4">
+        <div class="quiz-question-block" data-correct="option-b" data-explanation-right="Exactly. localStorage is local to the browser, so team sync needs a backend or cloud database." data-explanation-wrong="Not quite. localStorage remembers data locally, but it does not provide accounts, sync, or team sharing.">
+          <h3 class="quiz-question">A user wants prompts to appear on their phone and laptop. What should you tell an AI agent to add?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>More localStorage keys</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>A backend database and account-based sync</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>A larger CSS file</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module4')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module4')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>

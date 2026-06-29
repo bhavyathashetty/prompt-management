@@ -512,43 +512,52 @@ function App(): ReactElement {
 
   return (
     <div className="app-shell">
-      <aside className="sidebar" aria-label="Primary navigation">
-        <div className="brand">
-          <div className="brand-mark">
-            <Sparkles size={22} />
-          </div>
-          <div>
-            <p>PromptEasy</p>
-            <span>Prompt Management</span>
-          </div>
+      <header className="top-bar">
+        <div className="top-bar-inner">
+          <a className="brand" href="#dashboard" aria-label="PromptEasy dashboard">
+            <div className="brand-mark">
+              <Sparkles size={22} />
+            </div>
+            <div>
+              <p>PromptEasy</p>
+              <span>Prompt Management</span>
+            </div>
+          </a>
+
+          <nav className="nav-list" aria-label="Primary navigation">
+            <a className="active" href="#dashboard">
+              <Library size={17} /> Dashboard
+            </a>
+            <a href="#editor">
+              <MessageSquarePlus size={17} /> Save prompts
+            </a>
+            <a href="#library">
+              <Search size={17} /> Library
+            </a>
+            <a href="#frequent">
+              <TrendingUp size={17} /> Frequent
+            </a>
+            <a href="#enhance">
+              <Bot size={17} /> Improve
+            </a>
+          </nav>
+
+          <a className="nav-cta" href="#editor">
+            Get started
+          </a>
         </div>
-
-        <nav className="nav-list">
-          <a className="active" href="#dashboard">
-            <Library size={18} /> Dashboard
-          </a>
-          <a href="#editor">
-            <MessageSquarePlus size={18} /> Save prompts
-          </a>
-          <a href="#library">
-            <Search size={18} /> Search library
-          </a>
-          <a href="#frequent">
-            <TrendingUp size={18} /> Frequently used
-          </a>
-          <a href="#enhance">
-            <Bot size={18} /> Improve prompts
-          </a>
-        </nav>
-
-      </aside>
+      </header>
 
       <main className="main-content">
         <header className="hero" id="dashboard">
-          <div>
+          <div className="hero-copy">
             <span className="eyebrow">Dedicated prompt workspace</span>
-            <h1>Save, organize, discover, improve, and reuse prompts quickly.</h1>
-       
+            <h1>Save, organize, discover, and reuse prompts quickly.</h1>
+            <p>
+              A warm, focused library for turning everyday AI prompts into reusable tools your
+              whole workflow can trust.
+            </p>
+
             <div className="hero-actions">
               <a className="primary-button" href="#editor">
                 <MessageSquarePlus size={18} /> Create prompt
@@ -558,6 +567,24 @@ function App(): ReactElement {
               </a>
             </div>
           </div>
+
+          <div className="hero-art" aria-hidden="true">
+            <span className="blob-character blob-character-orange">
+              <span className="face" />
+            </span>
+            <span className="blob-character blob-character-green">
+              <span className="face" />
+            </span>
+            <span className="blob-character blob-character-blue">
+              <span className="face" />
+            </span>
+            <span className="blob-character blob-character-yellow">
+              <span className="face" />
+            </span>
+            <span className="spark-shape spark-shape-pink" />
+            <span className="spark-shape spark-shape-orange" />
+          </div>
+
           <section className="enhancer-card" aria-labelledby="quick-enhancer-title">
             <div className="card-heading">
               <Bot size={20} />

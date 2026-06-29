@@ -1,0 +1,85 @@
+<section class="module" id="module-1">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">01</span>
+      <h1 class="module-title">What PromptEasy Does</h1>
+      <p class="module-subtitle">Start with the thing you can see: a prompt library that lets someone save, organize, search, improve, and reuse prompts without a backend server.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Think of the app as a personal tool bench</h2>
+      <p>Each saved prompt is a labeled tool. The dashboard is the bench surface: categories, search, favorites, and reuse counters help the user grab the right tool quickly.</p>
+      <div class="pattern-cards stagger-children">
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-1)">
+          <div class="pattern-icon" style="background: var(--color-actor-1)">S</div>
+          <h4 class="pattern-title">Save</h4>
+          <p class="pattern-desc">The form turns a rough idea into a structured prompt record.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-2)">
+          <div class="pattern-icon" style="background: var(--color-actor-2)">F</div>
+          <h4 class="pattern-title">Find</h4>
+          <p class="pattern-desc">Search and category filters narrow the library instantly.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-5)">
+          <div class="pattern-icon" style="background: var(--color-actor-5)">R</div>
+          <h4 class="pattern-title">Reuse</h4>
+          <p class="pattern-desc">Copying a prompt also raises its usage count.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">The app enters the page through one small doorway</h2>
+      <p>The <span class="term" data-definition="An entry point is the first file that starts an application. If you ask an AI agent where the app begins, this is the kind of file you want it to inspect.">entry point</span> finds a blank HTML mount spot, then asks <span class="term" data-definition="React is a JavaScript library for building user interfaces from reusable pieces called components.">React</span> to render the main app there.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">const</span> rootElement = document.getElementById(<span class="code-string">'root'</span>);</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="code-keyword">if</span> (!rootElement) {</span>
+<span class="code-line">  <span class="code-keyword">throw new</span> Error(<span class="code-string">'Root element with id \'root\' was not found.'</span>);</span>
+<span class="code-line">}</span>
+<span class="code-line"></span>
+<span class="code-line">createRoot(rootElement).render(</span>
+<span class="code-line">  &lt;StrictMode&gt;</span>
+<span class="code-line">    &lt;App /&gt;</span>
+<span class="code-line">  &lt;/StrictMode&gt;,</span>
+<span class="code-line">);</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Find the empty page element named root.</p>
+            <p class="tl">If that spot is missing, stop with a clear error instead of failing mysteriously.</p>
+            <p class="tl">Tell React to place the App component inside that spot.</p>
+            <p class="tl">StrictMode helps surface React mistakes during development.</p>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-accent">
+        <div class="callout-icon">!</div>
+        <div class="callout-content">
+          <strong class="callout-title">Key Insight</strong>
+          <p>When an app looks huge, find the entry point first. It shows which top-level component owns the experience.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module1">
+        <div class="quiz-question-block" data-correct="option-b" data-explanation-right="Exactly. The entry point mounts App, and App contains the visible dashboard behavior." data-explanation-wrong="Not quite. CSS changes the look, but the React entry point reveals which component owns the app.">
+          <h3 class="quiz-question">An AI agent is lost in the project. What should you ask it to inspect first to understand the running app?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Only the stylesheet, because the app is visual</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The entry point, then the App component it renders</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The package lock file, because it is longest</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module1')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module1')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>

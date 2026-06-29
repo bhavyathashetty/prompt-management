@@ -1,0 +1,87 @@
+<section class="module" id="module-3">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">03</span>
+      <h1 class="module-title">How Data Moves</h1>
+      <p class="module-subtitle">React apps feel alive because data changes, then the screen redraws from that new data.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">A prompt travels like a parcel through a sorting center</h2>
+      <p>The form collects a parcel of text. The handlers label it. The prompt list stores it. The library shelf shows the latest sorted and filtered version.</p>
+      <div class="flow-animation animate-in" data-steps='[
+        {"highlight":"flow-actor-1","label":"User edits the form fields"},
+        {"highlight":"flow-actor-2","label":"handleFieldChange updates form state","packet":true,"from":"actor-1","to":"actor-2"},
+        {"highlight":"flow-actor-3","label":"handleSubmit creates a prompt payload","packet":true,"from":"actor-2","to":"actor-3"},
+        {"highlight":"flow-actor-4","label":"setPrompts places the prompt in the list","packet":true,"from":"actor-3","to":"actor-4"},
+        {"highlight":"flow-actor-5","label":"filteredPrompts redraws the library cards","packet":true,"from":"actor-4","to":"actor-5"}
+      ]'>
+        <div class="flow-actors">
+          <div class="flow-actor" id="flow-actor-1"><div class="flow-actor-icon">U</div><span>User</span></div>
+          <div class="flow-actor" id="flow-actor-2"><div class="flow-actor-icon">F</div><span>Form State</span></div>
+          <div class="flow-actor" id="flow-actor-3"><div class="flow-actor-icon">H</div><span>Handlers</span></div>
+          <div class="flow-actor" id="flow-actor-4"><div class="flow-actor-icon">P</div><span>Prompts</span></div>
+          <div class="flow-actor" id="flow-actor-5"><div class="flow-actor-icon">L</div><span>Library</span></div>
+        </div>
+        <div class="flow-packet" id="flow-packet"></div>
+        <div class="flow-step-label" id="flow-label">Click "Next Step" to begin</div>
+        <div class="flow-controls">
+          <button class="btn flow-next-btn">Next Step</button>
+          <button class="btn flow-reset-btn">Restart</button>
+          <span class="flow-progress"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Filtering is a derived view</h2>
+      <p><span class="term" data-definition="State is data a component remembers while the app is running. Changing state is how React knows the screen may need to update.">State</span> holds the raw prompt list. <span class="term" data-definition="Derived data is calculated from existing data instead of stored separately. This reduces mismatch bugs because there is one source of truth.">Derived data</span> calculates what the user should see right now.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">const</span> filteredPrompts = useMemo(() =&gt; {</span>
+<span class="code-line">  <span class="code-keyword">const</span> normalizedQuery = searchQuery.trim().toLowerCase();</span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="code-keyword">return</span> prompts.filter((prompt) =&gt; {</span>
+<span class="code-line">    <span class="code-keyword">const</span> matchesCategory = selectedCategory === <span class="code-string">'All'</span> || prompt.category === selectedCategory;</span>
+<span class="code-line">    <span class="code-keyword">const</span> searchableText = [prompt.title, prompt.category, prompt.content, ...prompt.tags]</span>
+<span class="code-line">      .join(<span class="code-string">' '</span>)</span>
+<span class="code-line">      .toLowerCase();</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Build the visible list from the current search, category, and prompt data.</p>
+            <p class="tl">Normalize the search so casing and extra spaces do not matter.</p>
+            <p class="tl">Keep a prompt if it matches the selected category.</p>
+            <p class="tl">Merge title, category, content, and tags into one searchable sentence.</p>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-info">
+        <div class="callout-icon">i</div>
+        <div class="callout-content">
+          <strong class="callout-title">Vocabulary That Helps AI</strong>
+          <p>Ask for a derived view when you want search, filtering, sorting, or totals without duplicating stored data.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module3">
+        <div class="quiz-question-block" data-correct="option-a" data-explanation-right="Exactly. The visible list is derived from prompts plus search and category state." data-explanation-wrong="Not quite. The app should keep the original prompts list intact and calculate the visible subset from it.">
+          <h3 class="quiz-question">A user says search hides too many prompts. Where is the most useful place to inspect first?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The filteredPrompts calculation</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Vite config</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The browser font loading link</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module3')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module3')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
