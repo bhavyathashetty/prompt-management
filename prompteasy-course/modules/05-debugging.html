@@ -1,0 +1,95 @@
+<section class="module" id="module-5">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">05</span>
+      <h1 class="module-title">Debugging and Next Moves</h1>
+      <p class="module-subtitle">Once you know the actors and the data flow, you can steer AI toward fixes instead of asking it to guess.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Debug by symptom, then follow the wire</h2>
+      <p>Use the app like a circuit board. A broken button, wrong count, or missing card points to a nearby handler, state value, or derived calculation.</p>
+      <div class="flow-steps animate-in">
+        <div class="flow-step"><div class="flow-step-num">1</div><p>Describe the visible symptom.</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-num">2</div><p>Find the click handler or input handler.</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-num">3</div><p>Check the state update.</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-num">4</div><p>Check the UI that reads that state.</p></div>
+      </div>
+      <div class="callout callout-accent">
+        <div class="callout-icon">!</div>
+        <div class="callout-content">
+          <strong class="callout-title">Prompt to Give an AI Agent</strong>
+          <p>Trace this bug from the user action to the state update to the rendered UI. Name the exact handler and derived data involved.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Copy is more than clipboard work</h2>
+      <p>The copy button has a <span class="term" data-definition="A fallback is backup behavior used when the preferred approach is unavailable. Good fallbacks make apps work in more browsers or failure cases.">fallback</span> for older browser behavior, then updates usage analytics.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">const</span> copyPrompt = <span class="code-keyword">async</span> (prompt: Prompt): Promise&lt;<span class="code-keyword">void</span>&gt; =&gt; {</span>
+<span class="code-line">  <span class="code-keyword">if</span> (navigator.clipboard) {</span>
+<span class="code-line">    <span class="code-keyword">await</span> navigator.clipboard.writeText(prompt.content);</span>
+<span class="code-line">  } <span class="code-keyword">else</span> {</span>
+<span class="code-line">    <span class="code-keyword">const</span> textarea = document.createElement(<span class="code-string">'textarea'</span>);</span>
+<span class="code-line">    textarea.value = prompt.content;</span>
+<span class="code-line">    textarea.setAttribute(<span class="code-string">'readonly'</span>, <span class="code-string">'true'</span>);</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Define an async action because clipboard writing can take a moment.</p>
+            <p class="tl">Use the modern browser clipboard when available.</p>
+            <p class="tl">If not available, create a hidden text box as backup.</p>
+            <p class="tl">Put the prompt content there so the older copy command can select it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Where future features naturally fit</h2>
+      <p>Good AI instructions name both the feature and the layer it belongs to. That keeps changes scoped.</p>
+      <div class="pattern-cards stagger-children">
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-1)">
+          <div class="pattern-icon" style="background: var(--color-actor-1)">D</div>
+          <h4 class="pattern-title">Difficulty field</h4>
+          <p class="pattern-desc">Update Prompt types, form state, starter prompts, cards, and filtering if needed.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-2)">
+          <div class="pattern-icon" style="background: var(--color-actor-2)">X</div>
+          <h4 class="pattern-title">Export prompts</h4>
+          <p class="pattern-desc">Read prompts state, serialize to JSON or CSV, and trigger a browser download.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-5)">
+          <div class="pattern-icon" style="background: var(--color-actor-5)">S</div>
+          <h4 class="pattern-title">Cloud sync</h4>
+          <p class="pattern-desc">Move persistence from localStorage to a backend service with authentication.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module5">
+        <div class="quiz-question-block" data-correct="option-a" data-explanation-right="Exactly. Copying updates clipboard and then increments uses, so start at copyPrompt." data-explanation-wrong="Not quite. Styling can hide text, but a usage counter failing after copy is likely in the copy handler or setPrompts update.">
+          <h3 class="quiz-question">A user says Copy works, but the Used count never increases. Where should you inspect first?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The copyPrompt handler and its setPrompts update</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The root element in index.html</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Google Fonts link</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module5')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module5')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>

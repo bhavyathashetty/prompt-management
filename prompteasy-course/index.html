@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptEasy Codebase Course</title>
+
+  <!-- Google Fonts: Bricolage Grotesque · DM Sans · JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!--
+    CUSTOMIZE PER COURSE — change only the three accent variables below.
+    Options:
+      vermillion  #D94F30 / #C4432A / #FDEEE9 / #E8836C  (default)
+      coral       #E06B56 / #C85A47 / #FDECEA / #E89585
+      teal        #2A7B9B / #1F6280 / #E4F2F7 / #5A9DB8
+      amber       #D4A843 / #BF9530 / #FDF5E0 / #E0C070
+      forest      #2D8B55 / #226B41 / #E8F5EE / #5AAD7A
+  -->
+  <style>
+    :root {
+      --color-accent:       #D94F30;
+      --color-accent-hover: #C4432A;
+      --color-accent-light: #FDEEE9;
+      --color-accent-muted: #E8836C;
+    }
+  </style>
+
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="progress-bar" id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="nav-inner">
+      <span class="nav-title">PromptEasy Codebase Course</span>
+      <div class="nav-dots" id="nav-dots" role="tablist">
+        <button class="nav-dot" data-target="module-1" data-tooltip="App Tour" role="tab" aria-label="Module 1: App Tour"></button>
+        <button class="nav-dot" data-target="module-2" data-tooltip="Actors" role="tab" aria-label="Module 2: Actors"></button>
+        <button class="nav-dot" data-target="module-3" data-tooltip="Data Flow" role="tab" aria-label="Module 3: Data Flow"></button>
+        <button class="nav-dot" data-target="module-4" data-tooltip="Persistence" role="tab" aria-label="Module 4: Persistence"></button>
+        <button class="nav-dot" data-target="module-5" data-tooltip="Debugging" role="tab" aria-label="Module 5: Debugging"></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+<section class="module" id="module-1">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">01</span>
+      <h1 class="module-title">What PromptEasy Does</h1>
+      <p class="module-subtitle">Start with the thing you can see: a prompt library that lets someone save, organize, search, improve, and reuse prompts without a backend server.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Think of the app as a personal tool bench</h2>
+      <p>Each saved prompt is a labeled tool. The dashboard is the bench surface: categories, search, favorites, and reuse counters help the user grab the right tool quickly.</p>
+      <div class="pattern-cards stagger-children">
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-1)">
+          <div class="pattern-icon" style="background: var(--color-actor-1)">S</div>
+          <h4 class="pattern-title">Save</h4>
+          <p class="pattern-desc">The form turns a rough idea into a structured prompt record.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-2)">
+          <div class="pattern-icon" style="background: var(--color-actor-2)">F</div>
+          <h4 class="pattern-title">Find</h4>
+          <p class="pattern-desc">Search and category filters narrow the library instantly.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-5)">
+          <div class="pattern-icon" style="background: var(--color-actor-5)">R</div>
+          <h4 class="pattern-title">Reuse</h4>
+          <p class="pattern-desc">Copying a prompt also raises its usage count.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">The app enters the page through one small doorway</h2>
+      <p>The <span class="term" data-definition="An entry point is the first file that starts an application. If you ask an AI agent where the app begins, this is the kind of file you want it to inspect.">entry point</span> finds a blank HTML mount spot, then asks <span class="term" data-definition="React is a JavaScript library for building user interfaces from reusable pieces called components.">React</span> to render the main app there.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">const</span> rootElement = document.getElementById(<span class="code-string">'root'</span>);</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="code-keyword">if</span> (!rootElement) {</span>
+<span class="code-line">  <span class="code-keyword">throw new</span> Error(<span class="code-string">'Root element with id \'root\' was not found.'</span>);</span>
+<span class="code-line">}</span>
+<span class="code-line"></span>
+<span class="code-line">createRoot(rootElement).render(</span>
+<span class="code-line">  &lt;StrictMode&gt;</span>
+<span class="code-line">    &lt;App /&gt;</span>
+<span class="code-line">  &lt;/StrictMode&gt;,</span>
+<span class="code-line">);</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Find the empty page element named root.</p>
+            <p class="tl">If that spot is missing, stop with a clear error instead of failing mysteriously.</p>
+            <p class="tl">Tell React to place the App component inside that spot.</p>
+            <p class="tl">StrictMode helps surface React mistakes during development.</p>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-accent">
+        <div class="callout-icon">!</div>
+        <div class="callout-content">
+          <strong class="callout-title">Key Insight</strong>
+          <p>When an app looks huge, find the entry point first. It shows which top-level component owns the experience.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module1">
+        <div class="quiz-question-block" data-correct="option-b" data-explanation-right="Exactly. The entry point mounts App, and App contains the visible dashboard behavior." data-explanation-wrong="Not quite. CSS changes the look, but the React entry point reveals which component owns the app.">
+          <h3 class="quiz-question">An AI agent is lost in the project. What should you ask it to inspect first to understand the running app?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Only the stylesheet, because the app is visual</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The entry point, then the App component it renders</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The package lock file, because it is longest</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module1')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module1')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="module" id="module-2">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">02</span>
+      <h1 class="module-title">Meet the Actors</h1>
+      <p class="module-subtitle">PromptEasy is compact: most of the cast lives in App.tsx. The trick is learning which actor owns which responsibility.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">The project map</h2>
+      <p>Think of the <span class="term" data-definition="A codebase is the full set of files that make up an application. When steering AI, naming the right file or folder reduces wandering.">codebase</span> like a labeled workshop cabinet: a few drawers, each with a specific job.</p>
+      <div class="file-tree animate-in">
+        <div class="ft-folder open">
+          <span class="ft-name">src/</span>
+          <span class="ft-desc">The app source files</span>
+          <div class="ft-children">
+            <div class="ft-file"><span class="ft-name">App.tsx</span><span class="ft-desc">UI, state, form handling, filtering, persistence, prompt actions</span></div>
+            <div class="ft-file"><span class="ft-name">main.tsx</span><span class="ft-desc">Mounts React into the page</span></div>
+            <div class="ft-file"><span class="ft-name">styles.css</span><span class="ft-desc">Global styles and component classes</span></div>
+          </div>
+        </div>
+        <div class="ft-file"><span class="ft-name">package.json</span><span class="ft-desc">Scripts and dependencies</span></div>
+        <div class="ft-file"><span class="ft-name">index.html</span><span class="ft-desc">The static page shell with the root mount</span></div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">The data shapes are the contract</h2>
+      <p>A <span class="term" data-definition="A type describes the shape of data. It is like a checklist that tells TypeScript what fields must exist.">type</span> tells TypeScript what a prompt must contain. This helps catch bad AI-generated changes before they become browser bugs.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">type</span> Prompt = {</span>
+<span class="code-line">  id: <span class="code-keyword">string</span>;</span>
+<span class="code-line">  title: <span class="code-keyword">string</span>;</span>
+<span class="code-line">  category: PromptCategory;</span>
+<span class="code-line">  tags: <span class="code-keyword">string</span>[];</span>
+<span class="code-line">  content: <span class="code-keyword">string</span>;</span>
+<span class="code-line">  favorite: <span class="code-keyword">boolean</span>;</span>
+<span class="code-line">  uses: <span class="code-keyword">number</span>;</span>
+<span class="code-line">  updatedAt: <span class="code-keyword">string</span>;</span>
+<span class="code-line">};</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Every prompt has a stable ID so the app can find it later.</p>
+            <p class="tl">Title, category, tags, and content describe the prompt.</p>
+            <p class="tl">Favorite is true or false, like a light switch.</p>
+            <p class="tl">Uses and updatedAt power the dashboard and sorting signals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">A component conversation</h2>
+      <p>This <span class="term" data-definition="A component is a reusable UI piece. In React, components can be tiny like a stat card or large like the whole App.">component</span> chat shows how the visible UI pieces cooperate when a user saves a prompt.</p>
+      <div class="chat-window animate-in" id="chat-module2">
+        <div class="chat-messages">
+          <div class="chat-message" data-msg="0" data-sender="app" style="display:none">
+            <div class="chat-avatar" style="background: var(--color-actor-1)">A</div>
+            <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-1)">App</span><p>I hold the prompt list, form state, filters, and action handlers.</p></div>
+          </div>
+          <div class="chat-message" data-msg="1" data-sender="form" style="display:none">
+            <div class="chat-avatar" style="background: var(--color-actor-2)">F</div>
+            <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-2)">Prompt Form</span><p>I collect title, category, tags, content, and favorite status.</p></div>
+          </div>
+          <div class="chat-message" data-msg="2" data-sender="library" style="display:none">
+            <div class="chat-avatar" style="background: var(--color-actor-5)">L</div>
+            <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-5)">Library</span><p>When App updates the list, I redraw the prompt cards from the latest data.</p></div>
+          </div>
+          <div class="chat-message" data-msg="3" data-sender="storage" style="display:none">
+            <div class="chat-avatar" style="background: var(--color-actor-4)">B</div>
+            <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-4)">Browser Storage</span><p>I remember the new list so it is still there after refresh.</p></div>
+          </div>
+        </div>
+        <div class="chat-typing" id="chat-module2-typing" style="display:none">
+          <div class="chat-avatar" id="chat-module2-typing-avatar">?</div>
+          <div class="chat-typing-dots"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>
+        </div>
+        <div class="chat-controls">
+          <button class="btn chat-next-btn">Next Message</button>
+          <button class="btn chat-all-btn">Play All</button>
+          <button class="btn chat-reset-btn">Replay</button>
+          <span class="chat-progress"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module2">
+        <div class="quiz-question-block" data-correct="option-c" data-explanation-right="Exactly. App owns the list and passes data into the visible sections." data-explanation-wrong="Not quite. The small cards display data, but App owns the main state and behavior in this codebase.">
+          <h3 class="quiz-question">You want to add a new field called difficulty to every prompt. Where should the AI start?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Only styles.css</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Only README.md</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Prompt type, form state, starter data, and save/edit UI in App.tsx</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module2')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module2')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="module" id="module-3">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">03</span>
+      <h1 class="module-title">How Data Moves</h1>
+      <p class="module-subtitle">React apps feel alive because data changes, then the screen redraws from that new data.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">A prompt travels like a parcel through a sorting center</h2>
+      <p>The form collects a parcel of text. The handlers label it. The prompt list stores it. The library shelf shows the latest sorted and filtered version.</p>
+      <div class="flow-animation animate-in" data-steps='[
+        {"highlight":"flow-actor-1","label":"User edits the form fields"},
+        {"highlight":"flow-actor-2","label":"handleFieldChange updates form state","packet":true,"from":"actor-1","to":"actor-2"},
+        {"highlight":"flow-actor-3","label":"handleSubmit creates a prompt payload","packet":true,"from":"actor-2","to":"actor-3"},
+        {"highlight":"flow-actor-4","label":"setPrompts places the prompt in the list","packet":true,"from":"actor-3","to":"actor-4"},
+        {"highlight":"flow-actor-5","label":"filteredPrompts redraws the library cards","packet":true,"from":"actor-4","to":"actor-5"}
+      ]'>
+        <div class="flow-actors">
+          <div class="flow-actor" id="flow-actor-1"><div class="flow-actor-icon">U</div><span>User</span></div>
+          <div class="flow-actor" id="flow-actor-2"><div class="flow-actor-icon">F</div><span>Form State</span></div>
+          <div class="flow-actor" id="flow-actor-3"><div class="flow-actor-icon">H</div><span>Handlers</span></div>
+          <div class="flow-actor" id="flow-actor-4"><div class="flow-actor-icon">P</div><span>Prompts</span></div>
+          <div class="flow-actor" id="flow-actor-5"><div class="flow-actor-icon">L</div><span>Library</span></div>
+        </div>
+        <div class="flow-packet" id="flow-packet"></div>
+        <div class="flow-step-label" id="flow-label">Click "Next Step" to begin</div>
+        <div class="flow-controls">
+          <button class="btn flow-next-btn">Next Step</button>
+          <button class="btn flow-reset-btn">Restart</button>
+          <span class="flow-progress"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Filtering is a derived view</h2>
+      <p><span class="term" data-definition="State is data a component remembers while the app is running. Changing state is how React knows the screen may need to update.">State</span> holds the raw prompt list. <span class="term" data-definition="Derived data is calculated from existing data instead of stored separately. This reduces mismatch bugs because there is one source of truth.">Derived data</span> calculates what the user should see right now.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">const</span> filteredPrompts = useMemo(() =&gt; {</span>
+<span class="code-line">  <span class="code-keyword">const</span> normalizedQuery = searchQuery.trim().toLowerCase();</span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="code-keyword">return</span> prompts.filter((prompt) =&gt; {</span>
+<span class="code-line">    <span class="code-keyword">const</span> matchesCategory = selectedCategory === <span class="code-string">'All'</span> || prompt.category === selectedCategory;</span>
+<span class="code-line">    <span class="code-keyword">const</span> searchableText = [prompt.title, prompt.category, prompt.content, ...prompt.tags]</span>
+<span class="code-line">      .join(<span class="code-string">' '</span>)</span>
+<span class="code-line">      .toLowerCase();</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Build the visible list from the current search, category, and prompt data.</p>
+            <p class="tl">Normalize the search so casing and extra spaces do not matter.</p>
+            <p class="tl">Keep a prompt if it matches the selected category.</p>
+            <p class="tl">Merge title, category, content, and tags into one searchable sentence.</p>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-info">
+        <div class="callout-icon">i</div>
+        <div class="callout-content">
+          <strong class="callout-title">Vocabulary That Helps AI</strong>
+          <p>Ask for a derived view when you want search, filtering, sorting, or totals without duplicating stored data.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module3">
+        <div class="quiz-question-block" data-correct="option-a" data-explanation-right="Exactly. The visible list is derived from prompts plus search and category state." data-explanation-wrong="Not quite. The app should keep the original prompts list intact and calculate the visible subset from it.">
+          <h3 class="quiz-question">A user says search hides too many prompts. Where is the most useful place to inspect first?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The filteredPrompts calculation</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Vite config</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The browser font loading link</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module3')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module3')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="module" id="module-4">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">04</span>
+      <h1 class="module-title">How It Remembers</h1>
+      <p class="module-subtitle">PromptEasy has no database. It uses the browser itself as a small notebook.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Local storage is a desk drawer</h2>
+      <p><span class="term" data-definition="localStorage is browser storage for small pieces of text data. It stays after refresh, but it belongs to this browser on this device.">localStorage</span> keeps saved prompts after the tab closes. That is convenient for an MVP, but it is not shared across devices or users.</p>
+      <div class="pattern-cards stagger-children">
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-5)">
+          <div class="pattern-icon" style="background: var(--color-actor-5)">G</div>
+          <h4 class="pattern-title">Good Fit</h4>
+          <p class="pattern-desc">Fast local MVPs, prototypes, demos, and private single-browser tools.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-4)">
+          <div class="pattern-icon" style="background: var(--color-actor-4)">T</div>
+          <h4 class="pattern-title">Tradeoff</h4>
+          <p class="pattern-desc">No account sync, no team sharing, and limited recovery if data is cleared.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-2)">
+          <div class="pattern-icon" style="background: var(--color-actor-2)">N</div>
+          <h4 class="pattern-title">Next Step</h4>
+          <p class="pattern-desc">A real backend database when users need login, sync, or collaboration.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Load carefully, save automatically</h2>
+      <p>The app uses <span class="term" data-definition="JSON is a text format for storing structured data such as arrays and objects. It is common when saving data or sending it between systems.">JSON</span> to store the prompt list as text. The careful part is the fallback: if stored data is missing or broken, the starter prompts still load.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">function</span> getInitialPrompts(): Prompt[] {</span>
+<span class="code-line">  <span class="code-keyword">const</span> storedPrompts = localStorage.getItem(STORAGE_KEY);</span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="code-keyword">if</span> (!storedPrompts) {</span>
+<span class="code-line">    <span class="code-keyword">return</span> starterPrompts;</span>
+<span class="code-line">  }</span>
+<span class="code-line"></span>
+<span class="code-line">  <span class="code-keyword">try</span> {</span>
+<span class="code-line">    <span class="code-keyword">const</span> parsedPrompts = JSON.parse(storedPrompts) <span class="code-keyword">as</span> Prompt[];</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Create the prompt list the app should start with.</p>
+            <p class="tl">Ask the browser drawer whether saved prompts exist.</p>
+            <p class="tl">If not, use the starter examples.</p>
+            <p class="tl">Try to convert stored text back into prompt objects.</p>
+          </div>
+        </div>
+      </div>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line">useEffect(() =&gt; {</span>
+<span class="code-line">  localStorage.setItem(STORAGE_KEY, JSON.stringify(prompts));</span>
+<span class="code-line">}, [prompts]);</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Whenever the prompt list changes, run this side task.</p>
+            <p class="tl">Convert the list into text and save it under the storage key.</p>
+            <p class="tl">The dependency list says this only needs to run after prompts changes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module4">
+        <div class="quiz-question-block" data-correct="option-b" data-explanation-right="Exactly. localStorage is local to the browser, so team sync needs a backend or cloud database." data-explanation-wrong="Not quite. localStorage remembers data locally, but it does not provide accounts, sync, or team sharing.">
+          <h3 class="quiz-question">A user wants prompts to appear on their phone and laptop. What should you tell an AI agent to add?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>More localStorage keys</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>A backend database and account-based sync</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>A larger CSS file</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module4')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module4')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="module" id="module-5">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">05</span>
+      <h1 class="module-title">Debugging and Next Moves</h1>
+      <p class="module-subtitle">Once you know the actors and the data flow, you can steer AI toward fixes instead of asking it to guess.</p>
+    </header>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Debug by symptom, then follow the wire</h2>
+      <p>Use the app like a circuit board. A broken button, wrong count, or missing card points to a nearby handler, state value, or derived calculation.</p>
+      <div class="flow-steps animate-in">
+        <div class="flow-step"><div class="flow-step-num">1</div><p>Describe the visible symptom.</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-num">2</div><p>Find the click handler or input handler.</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-num">3</div><p>Check the state update.</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-step-num">4</div><p>Check the UI that reads that state.</p></div>
+      </div>
+      <div class="callout callout-accent">
+        <div class="callout-icon">!</div>
+        <div class="callout-content">
+          <strong class="callout-title">Prompt to Give an AI Agent</strong>
+          <p>Trace this bug from the user action to the state update to the rendered UI. Name the exact handler and derived data involved.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Copy is more than clipboard work</h2>
+      <p>The copy button has a <span class="term" data-definition="A fallback is backup behavior used when the preferred approach is unavailable. Good fallbacks make apps work in more browsers or failure cases.">fallback</span> for older browser behavior, then updates usage analytics.</p>
+      <div class="translation-block animate-in">
+        <div class="translation-code">
+          <span class="translation-label">CODE</span>
+          <pre><code><span class="code-line"><span class="code-keyword">const</span> copyPrompt = <span class="code-keyword">async</span> (prompt: Prompt): Promise&lt;<span class="code-keyword">void</span>&gt; =&gt; {</span>
+<span class="code-line">  <span class="code-keyword">if</span> (navigator.clipboard) {</span>
+<span class="code-line">    <span class="code-keyword">await</span> navigator.clipboard.writeText(prompt.content);</span>
+<span class="code-line">  } <span class="code-keyword">else</span> {</span>
+<span class="code-line">    <span class="code-keyword">const</span> textarea = document.createElement(<span class="code-string">'textarea'</span>);</span>
+<span class="code-line">    textarea.value = prompt.content;</span>
+<span class="code-line">    textarea.setAttribute(<span class="code-string">'readonly'</span>, <span class="code-string">'true'</span>);</span></code></pre>
+        </div>
+        <div class="translation-english">
+          <span class="translation-label">PLAIN ENGLISH</span>
+          <div class="translation-lines">
+            <p class="tl">Define an async action because clipboard writing can take a moment.</p>
+            <p class="tl">Use the modern browser clipboard when available.</p>
+            <p class="tl">If not available, create a hidden text box as backup.</p>
+            <p class="tl">Put the prompt content there so the older copy command can select it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Where future features naturally fit</h2>
+      <p>Good AI instructions name both the feature and the layer it belongs to. That keeps changes scoped.</p>
+      <div class="pattern-cards stagger-children">
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-1)">
+          <div class="pattern-icon" style="background: var(--color-actor-1)">D</div>
+          <h4 class="pattern-title">Difficulty field</h4>
+          <p class="pattern-desc">Update Prompt types, form state, starter prompts, cards, and filtering if needed.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-2)">
+          <div class="pattern-icon" style="background: var(--color-actor-2)">X</div>
+          <h4 class="pattern-title">Export prompts</h4>
+          <p class="pattern-desc">Read prompts state, serialize to JSON or CSV, and trigger a browser download.</p>
+        </div>
+        <div class="pattern-card animate-in" style="border-top: 3px solid var(--color-actor-5)">
+          <div class="pattern-icon" style="background: var(--color-actor-5)">S</div>
+          <h4 class="pattern-title">Cloud sync</h4>
+          <p class="pattern-desc">Move persistence from localStorage to a backend service with authentication.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen animate-in">
+      <h2 class="screen-heading">Quick Check</h2>
+      <div class="quiz-container" id="quiz-module5">
+        <div class="quiz-question-block" data-correct="option-a" data-explanation-right="Exactly. Copying updates clipboard and then increments uses, so start at copyPrompt." data-explanation-wrong="Not quite. Styling can hide text, but a usage counter failing after copy is likely in the copy handler or setPrompts update.">
+          <h3 class="quiz-question">A user says Copy works, but the Used count never increases. Where should you inspect first?</h3>
+          <div class="quiz-options">
+            <button class="quiz-option" data-value="option-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The copyPrompt handler and its setPrompts update</span></button>
+            <button class="quiz-option" data-value="option-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The root element in index.html</span></button>
+            <button class="quiz-option" data-value="option-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Google Fonts link</span></button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+        <button class="quiz-check-btn" onclick="checkQuiz('quiz-module5')">Check Answer</button>
+        <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module5')">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+</body>
+</html>
